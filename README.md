@@ -1,8 +1,8 @@
-##Pour installer l'application:
+## Pour installer l'application:
 
 ### `npm install`
 
-##Pour démarrer l'application:
+## Pour démarrer l'application:
 
 ### `npm start`
 
