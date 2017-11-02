@@ -6,7 +6,6 @@ import {
 } from 'react-router-dom';
 import './index.css';
 import App from './App';
-import registerServiceWorker from './registerServiceWorker';
 
 
 ReactDOM.render(
@@ -15,4 +14,3 @@ ReactDOM.render(
   </Router>, 
   document.getElementById('root')
   );
-registerServiceWorker();

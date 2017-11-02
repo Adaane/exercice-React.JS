@@ -30,7 +30,7 @@ export class IdeaApp extends Component {
     return(
       <div>
         <h1>Bienvenue dans la plateforme de partage d'idée de braineet. </h1>
-k        <h3>Cliquer pour choisir une marque :</h3>
+        <h3>Cliquer pour choisir une marque :</h3>
 
           <ul>
             {this.state.company.map( (company, i) => {
