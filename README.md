@@ -1,6 +1,6 @@
 ## Pour installer l'application:
 
-### `npm install`
+### `npm run install`
 
 ## Pour démarrer l'application:
 
