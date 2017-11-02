@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { AddIdeaComponent } from './components/AddIdeaComponent.js';
 
 
 export class IdeaApp extends Component {
@@ -29,62 +30,31 @@ export class IdeaApp extends Component {
   render() {
     return(
       <div>
-        <h1>Bienvenue dans la plateforme de partage d'idée de braineet. </h1>
-        <h3>Cliquer pour choisir une marque :</h3>
+        <h3>Cliquez pour choisir une marque :</h3>
+        <ul>
+          {this.state.company.map( (company, i) => {
+            let change = this.handleChangeCompany.bind(this, i);
+            return (
+              <label>
+              <input key={i} type='radio' value={company} onClick={change} />
+              {company}
+              </label>
+              )
+            })}
+        </ul>
 
-          <ul>
-            {this.state.company.map( (company, i) => {
-              let change = this.handleChangeCompany.bind(this, i);
-              return <li key={company} onClick={change}>{company}</li>
-              })}
-          </ul>
+        <AddIdeaComponent onSubmit={this.addNewIdea} name={this.state.actual} />
 
         <h3 className={this.state.ideas.length ? '' : 'hidden'}>Idées: </h3>
         <ul>
           {this.state.ideas.map( (idea,i) => <li key={i}>{idea.idea}</li> )}
         </ul>
-        <AddIdeaComponent onSubmit={this.addNewIdea} name={this.state.actual} />
       </div>
     )
   }
 }
 
 
-class AddIdeaComponent extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      valueInput : "",
-      idea: ""
-    };
-    this.updateInput = this.updateInput.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    this.props.onSubmit({
-      idea: "Idée pour " + this.props.name + ": " + this.input.value 
-    }) 
-    this.input.value = "";
-  }
-
-  updateInput(){
-    this.setState({
-      valueInput :  this.input.value
-    })
-  }
-
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <h2>Ajouter une idée pour {this.props.name}: </h2>
-        <input ref={(input) => this.input = input} onChange={this.updateInput} placeholder="Entrée votre idée ici" />
-        <button>Ajouter</button>
-      </form>
-    )
-  }
-}
 
 
 
